@@ -14,6 +14,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let attributes = [NSAttributedString.Key.foregroundColor: UIColor.white,
+                          NSAttributedString.Key.font: UIFont(name: "TitilliumWeb-Bold", size: 25.0)]
+        self.navigationController?.navigationBar.titleTextAttributes = attributes as [NSAttributedString.Key : Any]
         raceCalendarTableView.delegate = self
         raceCalendarTableView.dataSource = self
         raceEventModel.getF1CalendarFor(year: "2022") { title, message in
@@ -38,9 +41,7 @@ extension HomeViewController {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "raceCell", for: indexPath) as? RaceEventTableViewCell
         let raceEvent = raceEventModel.raceCalendar[indexPath.row]
-        cell!.setRaceEventLabelsWith(raceName: raceEvent.raceName,
-                                     raceDate: raceEvent.raceDate,
-                                     raceTime: raceEvent.raceTime)
+        cell!.setRaceEventLabelsWith(raceDetails: raceEvent, round: (indexPath.row+1))
         return cell!
     }
     

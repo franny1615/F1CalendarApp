@@ -2,6 +2,20 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>TitilliumWeb-Black</string>
+		<string>TitilliumWeb-Bold</string>
+		<string>TitilliumWeb-BoldItalic</string>
+		<string>TitilliumWeb-ExtraLight</string>
+		<string>TitilliumWeb-ExtraLightItalic</string>
+		<string>TitilliumWeb-Italic</string>
+		<string>TitilliumWeb-Light</string>
+		<string>TitilliumWeb-LightItalic</string>
+		<string>TitilliumWeb-Regular</string>
+		<string>TitilliumWeb-SemiBold</string>
+		<string>TitilliumWeb-SemiBoldItalic</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
