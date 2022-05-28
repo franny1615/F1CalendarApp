@@ -9,6 +9,15 @@ import Foundation
 class RaceEventsModel {
     private let f1ApiNetworkRequest = GetRaceCalendarByYear()
     var raceCalendar: [Race] = []
+    var availableSeasons: [String] {
+        var seasons: [String] = []
+        let currentYear = Calendar.current.component(.year, from: Date())
+        let gapSince1950 = currentYear - 1950
+        for i in 0...gapSince1950 {
+            seasons.append("\(1950+i)")
+        }
+        return seasons
+    }
     var selectedRaceEvent: Race?
     
     func getF1CalendarFor(year: String, handleCalendarResultMessage: @escaping(String, String) -> Void) {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="I6A-bw-Jtc">
-    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -8,14 +8,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="TitilliumWeb-Bold.ttf">
-            <string>TitilliumWeb-Bold</string>
+        <array key="F1-Regular.ttf">
+            <string>Formula1-Display-Regular</string>
         </array>
-        <array key="TitilliumWeb-Light.ttf">
-            <string>TitilliumWeb-Light</string>
-        </array>
-        <array key="TitilliumWeb-Regular.ttf">
-            <string>TitilliumWeb-Regular</string>
+        <array key="F1-Wide.ttf">
+            <string>Formula1-Display-Wide</string>
         </array>
     </customFonts>
     <scenes>
@@ -24,7 +21,7 @@
             <objects>
                 <navigationController id="I6A-bw-Jtc" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="muC-S4-9jg">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -40,56 +37,65 @@
             <objects>
                 <viewController title="Main Dashboard" id="fie-u5-5lM" customClass="HomeViewController" customModule="F1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xfk-KK-PYh">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Sh9-GH-Mec">
-                                <rect key="frame" x="0.0" y="52" width="320" height="516"/>
+                                <rect key="frame" x="0.0" y="96" width="414" height="766"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Season Selection" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tst-0v-shV">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="17"/>
+                                        <fontDescription key="fontDescription" name="Formula1-Display-Wide" family="Formula1" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L0T-4m-qJX">
+                                        <rect key="frame" x="0.0" y="33" width="414" height="76.5"/>
+                                    </pickerView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w9G-GR-dQg">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <rect key="frame" x="0.0" y="125.5" width="414" height="17"/>
+                                        <fontDescription key="fontDescription" name="Formula1-Display-Wide" family="Formula1" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="C5h-sz-RQz">
-                                        <rect key="frame" x="0.0" y="36.5" width="320" height="479.5"/>
+                                        <rect key="frame" x="0.0" y="158.5" width="414" height="607.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="raceCell" rowHeight="80" id="Yc2-iV-Tyb" customClass="RaceEventTableViewCell" customModule="F1" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="44.5" width="320" height="80"/>
+                                                <rect key="frame" x="0.0" y="44.5" width="414" height="80"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Yc2-iV-Tyb" id="5hW-DG-fzt">
-                                                    <rect key="frame" x="0.0" y="0.0" width="295.5" height="80"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="385.5" height="80"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Lf0-Jv-5hQ" userLabel="raceEvent">
-                                                            <rect key="frame" x="8" y="8" width="279.5" height="64"/>
+                                                            <rect key="frame" x="8" y="8" width="369.5" height="64"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="evx-yt-GRe">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="64"/>
-                                                                    <fontDescription key="fontDescription" name="TitilliumWeb-Regular" family="Titillium Web" pointSize="15"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="92.5" height="64"/>
+                                                                    <fontDescription key="fontDescription" name="Formula1-Display-Regular" family="Formula1" pointSize="15"/>
                                                                     <color key="textColor" systemColor="systemGrayColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7my-8s-QdW" userLabel="raceTime">
-                                                                    <rect key="frame" x="78" y="0.0" width="201.5" height="64"/>
+                                                                    <rect key="frame" x="100.5" y="0.0" width="269" height="64"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Round" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="mCC-ef-P40">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="201.5" height="19"/>
-                                                                            <fontDescription key="fontDescription" name="TitilliumWeb-Light" family="Titillium Web" pointSize="15"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="269" height="19"/>
+                                                                            <fontDescription key="fontDescription" name="Formula1-Display-Regular" family="Formula1" pointSize="15"/>
                                                                             <color key="textColor" systemColor="systemRedColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="QoM-zf-9Nl">
-                                                                            <rect key="frame" x="0.0" y="19" width="201.5" height="26"/>
-                                                                            <fontDescription key="fontDescription" name="TitilliumWeb-Bold" family="Titillium Web" pointSize="25"/>
+                                                                            <rect key="frame" x="0.0" y="19" width="269" height="26"/>
+                                                                            <fontDescription key="fontDescription" name="Formula1-Display-Regular" family="Formula1" pointSize="25"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Circuit" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hxE-fe-fGJ">
-                                                                            <rect key="frame" x="0.0" y="45" width="201.5" height="19"/>
-                                                                            <fontDescription key="fontDescription" name="TitilliumWeb-Regular" family="Titillium Web" pointSize="15"/>
+                                                                            <rect key="frame" x="0.0" y="45" width="269" height="19"/>
+                                                                            <fontDescription key="fontDescription" name="Formula1-Display-Regular" family="Formula1" pointSize="15"/>
                                                                             <color key="textColor" systemColor="systemGrayColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
@@ -122,6 +128,9 @@
                                         </prototypes>
                                     </tableView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="L0T-4m-qJX" firstAttribute="height" secondItem="Sh9-GH-Mec" secondAttribute="height" multiplier="10:100" id="sG2-81-m1c"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Iwh-Ic-cMX"/>
@@ -137,6 +146,7 @@
                     <connections>
                         <outlet property="currentCalendarLabel" destination="w9G-GR-dQg" id="wYm-tX-J3X"/>
                         <outlet property="raceCalendarTableView" destination="C5h-sz-RQz" id="hvz-BC-5Fc"/>
+                        <outlet property="seasonYearPickerView" destination="L0T-4m-qJX" id="s74-Dp-zFy"/>
                         <segue destination="K15-c3-Pa7" kind="show" identifier="raceDetailsSegue" id="WhI-l3-gV5"/>
                     </connections>
                 </viewController>
@@ -152,7 +162,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VMG-VV-kyC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="913" y="13"/>
+            <point key="canvasLocation" x="780" y="13"/>
         </scene>
     </scenes>
     <resources>

@@ -7,28 +7,43 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     private let raceEventModel = RaceEventsModel()
+    @IBOutlet weak private var seasonYearPickerView: UIPickerView!
     @IBOutlet weak private var raceCalendarTableView: UITableView!
     @IBOutlet weak private var currentCalendarLabel: UILabel!
+    private let currentYear = Calendar.current.component(.year, from: Date())
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let attributes = [NSAttributedString.Key.foregroundColor: UIColor.white,
-                          NSAttributedString.Key.font: UIFont(name: "TitilliumWeb-Bold", size: 25.0)]
+                          NSAttributedString.Key.font: UIFont(name: F1Fonts.bold.rawValue, size: 20.0)]
         self.navigationController?.navigationBar.titleTextAttributes = attributes as [NSAttributedString.Key : Any]
-        raceCalendarTableView.delegate = self
-        raceCalendarTableView.dataSource = self
-        raceEventModel.getF1CalendarFor(year: "2022") { title, message in
+        
+        self.assignDelegatesAndDataSources()
+        self.seasonYearPickerView.selectRow(raceEventModel.availableSeasons.count-1, inComponent: 0, animated: true)
+        self.fetchRaceCalendar(year: "\(currentYear)")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationController?.navigationBar.barStyle = .black
+    }
+    
+    private func fetchRaceCalendar(year: String) {
+        raceEventModel.getF1CalendarFor(year: year) { title, message in
             DispatchQueue.main.async {
-                let okAction = UIAlertAction(title: "OK", style: .default)
-                let resultMessageAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-                resultMessageAlert.addAction(okAction)
                 self.raceCalendarTableView.reloadData()
-                self.present(resultMessageAlert, animated: true, completion: nil)
             }
         }
-        currentCalendarLabel.text = "2022 Calendar"
+        currentCalendarLabel.text = "\(year) Calendar"
+    }
+    
+    private func assignDelegatesAndDataSources() {
+        raceCalendarTableView.delegate = self
+        raceCalendarTableView.dataSource = self
+        seasonYearPickerView.delegate = self
+        seasonYearPickerView.dataSource = self
     }
 }
 
@@ -49,6 +64,33 @@ extension HomeViewController {
         let selectedRaceEvent = raceEventModel.raceCalendar[indexPath.row]
         raceEventModel.selectedRaceEvent = selectedRaceEvent
         performSegue(withIdentifier: "raceDetailsSegue", sender: self)
+    }
+}
+
+// MARK: - Picker View Setup
+extension HomeViewController {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return raceEventModel.availableSeasons.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return pickerView.bounds.height
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let label = UILabel()
+        label.textAlignment = .center
+        let text = "\(raceEventModel.availableSeasons[row])"
+        label.attributedText = TextHelpers.attributedTextFrom(fontName: F1Fonts.wide.rawValue, fontColor: UIColor.black, fontSize: 20.0, text: text)
+        return label
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.fetchRaceCalendar(year: raceEventModel.availableSeasons[row])
     }
 }
 

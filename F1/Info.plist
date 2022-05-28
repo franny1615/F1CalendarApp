@@ -4,17 +4,10 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>TitilliumWeb-Black</string>
-		<string>TitilliumWeb-Bold</string>
-		<string>TitilliumWeb-BoldItalic</string>
-		<string>TitilliumWeb-ExtraLight</string>
-		<string>TitilliumWeb-ExtraLightItalic</string>
-		<string>TitilliumWeb-Italic</string>
-		<string>TitilliumWeb-Light</string>
-		<string>TitilliumWeb-LightItalic</string>
-		<string>TitilliumWeb-Regular</string>
-		<string>TitilliumWeb-SemiBold</string>
-		<string>TitilliumWeb-SemiBoldItalic</string>
+		<string>F1-Regular</string>
+		<string>F1-Bold</string>
+		<string>F1-Black</string>
+		<string>F1-Wide</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
@@ -35,5 +28,7 @@
 			</array>
 		</dict>
 	</dict>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleLightContent</string>
 </dict>
 </plist>

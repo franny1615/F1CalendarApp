@@ -47,6 +47,7 @@ class GetRaceCalendarByYear: NSObject, XMLParserDelegate {
         }
         
         let task = URLSession.shared.dataTask(with: urlWithYear) { data, response, error in
+            self.raceCalendar = []
             guard let uData = data else {
                 handleResponse(nil)
                 return

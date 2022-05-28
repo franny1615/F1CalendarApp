@@ -32,25 +32,43 @@ class RaceEventDetailsViewController: UIViewController {
         setUpUI()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
     private func setUpUI() {
+        self.navigationController?.navigationBar.topItem?.backButtonTitle = ""
+        self.navigationController?.navigationBar.backgroundColor = UIColor.systemRed
+        let attributes = [NSAttributedString.Key.foregroundColor: UIColor.white,
+                          NSAttributedString.Key.font: UIFont(name: "Formula1-Display-Bold", size: 20.0)]
+        self.navigationController?.navigationBar.titleTextAttributes = attributes as [NSAttributedString.Key : Any]
         guard let selectedRace = raceEventModel?.selectedRaceEvent else {
             // TODO: you can show a message and return to main dashboard
             return
         }
-        raceNameLabel.text = selectedRace.raceName
-        raceDateLabel.text = selectedRace.raceDate
-        raceTimeLabel.text = selectedRace.raceTime
+        self.navigationItem.title = "\(selectedRace.raceCircuit.circuitCountry)"
+        self.navigationController?.navigationBar.tintColor = UIColor.white
         
-        firstPracticeDateLabel.text = selectedRace.firstPractice.date
-        firstPracticeTimeLabel.text = selectedRace.firstPractice.time
+        let month = TextHelpers.getBackPartFrom(date: selectedRace.raceDate, part: "MMM")
+        let raceDay = TextHelpers.getBackPartFrom(date: selectedRace.raceDate, part: "dd")
+        raceNameLabel.text = selectedRace.raceCircuit.circuitName
+        raceDateLabel.text = "\(month)\n\(raceDay)"
+        raceTimeLabel.text = TextHelpers.getPrettyTimeFrom(time: selectedRace.raceTime)
         
-        secondPracticeDateLabel.text = selectedRace.secondPractice.date
-        secondPracticeTimeLabel.text = selectedRace.secondPractice.time
+        let fp1Day = TextHelpers.getBackPartFrom(date: selectedRace.firstPractice.date, part: "dd")
+        firstPracticeDateLabel.text = "\(month)\n\(fp1Day)"
+        firstPracticeTimeLabel.text = TextHelpers.getPrettyTimeFrom(time: selectedRace.firstPractice.time)
         
-        thirdPracticeDateLabel.text = selectedRace.thirdPractice.date
-        thirdPracticeTimeLabel.text = selectedRace.thirdPractice.time
+        let fp2Day = TextHelpers.getBackPartFrom(date: selectedRace.secondPractice.date, part: "dd")
+        secondPracticeDateLabel.text =  "\(month)\n\(fp2Day)"
+        secondPracticeTimeLabel.text = TextHelpers.getPrettyTimeFrom(time: selectedRace.secondPractice.time)
         
-        qualiDateLabel.text = selectedRace.qualifying.date
-        qualiTimeLabel.text = selectedRace.qualifying.time
+        let fp3Day = TextHelpers.getBackPartFrom(date: selectedRace.thirdPractice.date, part: "dd")
+        thirdPracticeDateLabel.text =   "\(month)\n\(fp3Day)"
+        thirdPracticeTimeLabel.text = TextHelpers.getPrettyTimeFrom(time: selectedRace.thirdPractice.time)
+        
+        let qualiDay = TextHelpers.getBackPartFrom(date: selectedRace.qualifying.date, part: "dd")
+        qualiDateLabel.text =   "\(month)\n\(qualiDay)"
+        qualiTimeLabel.text = TextHelpers.getPrettyTimeFrom(time: selectedRace.qualifying.time)
     }
 }
