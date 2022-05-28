@@ -32,7 +32,7 @@ class GetRaceCalendarByYear: NSObject, XMLParserDelegate {
     
     private var raceCalendar: [Race] = []
     private var currentRace: Race = Race(raceName: "",
-                                         raceCircuit: Circuit(circuitName: "", circuitCity: "", circuitCountry: ""),
+                                         raceCircuit: Circuit(circuitName: "", circuitCity: "", circuitCountry: "", longitude: 0.0, latitude: 0.0),
                                          raceDate: "",
                                          raceTime: "",
                                          firstPractice: Session(sessionType: .practice, date: "", time: ""),
@@ -79,6 +79,10 @@ extension GetRaceCalendarByYear {
         } else {
             self.parentElementName = elementName
         }
+        if elementName == "Location" {
+            currentRace.raceCircuit.longitude = Float(attributeDict["long"] ?? "") ?? 0.0
+            currentRace.raceCircuit.latitude = Float(attributeDict["lat"] ?? "") ?? 0.0
+        }
     }
 
     // this one is used to append to the array you're working on
@@ -87,7 +91,7 @@ extension GetRaceCalendarByYear {
             raceCalendar.append(currentRace)
         }
     }
-
+    
     // this one is used to append data to the object you're constructing that goes into the array
     func parser(_ parser: XMLParser, foundCharacters string: String) {
         let data = string.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)

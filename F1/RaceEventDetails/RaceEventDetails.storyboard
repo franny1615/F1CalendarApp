@@ -201,6 +201,9 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="kYU-WF-Ugf">
+                                        <rect key="frame" x="20.5" y="55" width="373" height="433"/>
+                                    </mapView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -208,9 +211,11 @@
                                     <constraint firstItem="Tjv-iv-8AE" firstAttribute="top" secondItem="Cly-2V-Loc" secondAttribute="bottom" id="2M0-ah-CdW"/>
                                     <constraint firstItem="sCI-NV-mC0" firstAttribute="leading" secondItem="C9P-dC-tlN" secondAttribute="leading" constant="8" id="4Gs-jg-Yuk"/>
                                     <constraint firstAttribute="trailing" secondItem="Tjv-iv-8AE" secondAttribute="trailing" constant="8" id="Aa4-JG-WrY"/>
+                                    <constraint firstItem="kYU-WF-Ugf" firstAttribute="top" secondItem="Tjv-iv-8AE" secondAttribute="bottom" constant="16" id="AlI-zH-m4W"/>
                                     <constraint firstItem="Cly-2V-Loc" firstAttribute="top" secondItem="C9P-dC-tlN" secondAttribute="top" id="DYs-A2-qaN"/>
                                     <constraint firstAttribute="trailing" secondItem="v2r-4R-94A" secondAttribute="trailing" constant="8" id="EEU-nE-VX4"/>
                                     <constraint firstAttribute="trailing" secondItem="y31-za-DA2" secondAttribute="trailing" constant="8" id="GEp-Yo-h8F"/>
+                                    <constraint firstItem="kYU-WF-Ugf" firstAttribute="centerX" secondItem="C9P-dC-tlN" secondAttribute="centerX" id="HOc-AM-gxA"/>
                                     <constraint firstItem="K6J-ml-ADV" firstAttribute="top" secondItem="R1S-v3-KLX" secondAttribute="bottom" constant="16" id="RKA-VY-UON"/>
                                     <constraint firstItem="K6J-ml-ADV" firstAttribute="leading" secondItem="C9P-dC-tlN" secondAttribute="leading" constant="8" id="U9S-zR-h3W"/>
                                     <constraint firstItem="R1S-v3-KLX" firstAttribute="leading" secondItem="C9P-dC-tlN" secondAttribute="leading" constant="8" id="UYD-cQ-ILe"/>
@@ -219,7 +224,9 @@
                                     <constraint firstItem="Tjv-iv-8AE" firstAttribute="leading" secondItem="C9P-dC-tlN" secondAttribute="leading" constant="8" id="atc-HA-Vu7"/>
                                     <constraint firstAttribute="bottom" secondItem="sCI-NV-mC0" secondAttribute="bottom" constant="8" id="dki-eK-JSb"/>
                                     <constraint firstItem="sCI-NV-mC0" firstAttribute="top" secondItem="y31-za-DA2" secondAttribute="bottom" constant="16" id="g4d-hH-VZ1"/>
+                                    <constraint firstItem="Udh-tI-iPd" firstAttribute="top" secondItem="kYU-WF-Ugf" secondAttribute="bottom" constant="16" id="iMI-eR-8RW"/>
                                     <constraint firstAttribute="trailing" secondItem="Cly-2V-Loc" secondAttribute="trailing" constant="8" id="lNQ-iN-vkt"/>
+                                    <constraint firstItem="kYU-WF-Ugf" firstAttribute="width" secondItem="C9P-dC-tlN" secondAttribute="width" multiplier="90:100" id="lee-nS-LJq"/>
                                     <constraint firstAttribute="trailing" secondItem="sCI-NV-mC0" secondAttribute="trailing" constant="8" id="pDd-2X-HLz"/>
                                     <constraint firstItem="Udh-tI-iPd" firstAttribute="leading" secondItem="C9P-dC-tlN" secondAttribute="leading" constant="16" id="qpr-AF-IMX"/>
                                     <constraint firstAttribute="trailing" secondItem="R1S-v3-KLX" secondAttribute="trailing" constant="8" id="trE-TW-9Go"/>
@@ -244,6 +251,7 @@
                     <connections>
                         <outlet property="firstPracticeDateLabel" destination="bsL-9S-Ysy" id="dbL-IQ-gz6"/>
                         <outlet property="firstPracticeTimeLabel" destination="f8O-jB-f7h" id="zV2-RE-zMH"/>
+                        <outlet property="map" destination="kYU-WF-Ugf" id="A5Y-L4-xI5"/>
                         <outlet property="qualiDateLabel" destination="MrT-sq-vhU" id="paB-SH-TUb"/>
                         <outlet property="qualiTimeLabel" destination="EKE-PR-rgw" id="Xnv-17-l4f"/>
                         <outlet property="raceDateLabel" destination="mhq-Ph-I0k" id="6hG-9w-Zeg"/>

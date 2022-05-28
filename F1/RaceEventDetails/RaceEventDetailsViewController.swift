@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import MapKit
 import UIKit
 
 class RaceEventDetailsViewController: UIViewController {
@@ -26,6 +27,8 @@ class RaceEventDetailsViewController: UIViewController {
     // Qualifying
     @IBOutlet weak private var qualiDateLabel: UILabel!
     @IBOutlet weak private var qualiTimeLabel: UILabel!
+    // Map
+    @IBOutlet weak private var map: MKMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,5 +73,19 @@ class RaceEventDetailsViewController: UIViewController {
         let qualiDay = TextHelpers.getBackPartFrom(date: selectedRace.qualifying.date, part: "dd")
         qualiDateLabel.text =   "\(month)\n\(qualiDay)"
         qualiTimeLabel.text = TextHelpers.getPrettyTimeFrom(time: selectedRace.qualifying.time)
+        
+        let raceLocation = CLLocation(latitude: CLLocationDegrees(selectedRace.raceCircuit.latitude), longitude: CLLocationDegrees(selectedRace.raceCircuit.longitude))
+        
+        map.centerToLocation(raceLocation)
+    }
+}
+
+private extension MKMapView {
+    func centerToLocation(_ location: CLLocation, regionRadius: CLLocationDistance = 3000) {
+        let coordinateRegion = MKCoordinateRegion(
+              center: location.coordinate,
+              latitudinalMeters: regionRadius,
+              longitudinalMeters: regionRadius)
+            setRegion(coordinateRegion, animated: true)
     }
 }

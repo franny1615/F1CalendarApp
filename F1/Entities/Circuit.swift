@@ -11,4 +11,6 @@ struct Circuit {
     var circuitName: String
     var circuitCity: String
     var circuitCountry: String
+    var longitude: Float
+    var latitude: Float
 }
